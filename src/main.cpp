@@ -1,8 +1,10 @@
 #include <iostream>
-#include <string.h>
+#include <string>
 #include <math.h>
 #include <Metodo.hpp>
 #include <Funcion.hpp>
+#include <Interpretador.hpp>
+#include "tinyexpr.h"
 
 using namespace std;
 
@@ -14,15 +16,17 @@ int main(int argc, char const *argv[])
     Funcion funcion1;
     cout << "Introduzca la expresi" << char(162) << "n a integrar" << endl;
     cin >> expresion;
-    funcion1.Capturar(expresion);//Función por terminar
-    Metodo metodo1;
+    expresion = funcion1.Capturar(expresion);
+    Metodo metodoSimpson;
     cout << "Ingrese el l" << char(161) << "mite inferior de integraci" << char(162) << "n:" << endl;
     cin >> a;
     cout << "Ingrese el l" << char(161) << "mite superior de integraci" << char(162) << "n:" << endl;
     cin >> b;
     cout << "Ingrese el n" << char(163) << "mero de intervalos de integraci" << char(162) << "n" << endl;
     cin >> n;
-    c = metodo1.Calcular(a, b, n);
+    c = metodoSimpson.Calcular(a, b, n, expresion);
     cout << "El resultado es: " << c << endl;
+    fflush(stdin);
+    getchar();
     return 0;
-}
+};
